@@ -1,0 +1,370 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap");
+
+:root {
+  --dark-text: hsl(229, 25%, 31%);
+  --score-text: hsl(229, 64%, 46%);
+  --header-outline: hsl(217, 16%, 45%);
+  --icon-border-w: 16px;
+}
+
+body {
+  margin: 0;
+  padding-top: 3rem;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body {
+  background: radial-gradient(
+    circle at center top,
+    hsl(214, 47%, 23%),
+    hsl(237, 49%, 15%)
+  );
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+.top-section {
+  border: solid 3px var(--header-outline);
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  width: 650px;
+  margin: 0 auto 3rem;
+  padding: 1rem 2rem;
+}
+
+.score-container {
+  background-color: white;
+  border-radius: 8px;
+  text-align: center;
+  padding: 0.75rem 3rem;
+}
+.score-label {
+  color: var(--score-text);
+  font-weight: 600;
+  font-size: 1.25rem;
+  font-variant: small-caps;
+  letter-spacing: 2px;
+}
+.score-value {
+  color: var(--dark-text);
+  font-weight: 700;
+  font-size: 4rem;
+}
+
+/**** Rules Card ****/
+
+.rules-overlay {
+  background-color: #0008;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 998;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+.rules-card {
+  background-color: white;
+  z-index: 999;
+  padding: 2rem;
+  border-radius: 8px;
+}
+.rules-card-header {
+  display: flex;
+  justify-content: space-between;
+}
+.rules-label {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--dark-text);
+}
+.close-btn {
+  background-color: transparent;
+}
+
+.rules-img {
+  margin: 1rem 0;
+}
+
+.game-container {
+  position: relative;
+}
+
+/**** Stage one ****/
+
+.stage-one-container {
+  position: relative;
+  width: fit-content;
+  margin: 6rem auto 2rem;
+}
+
+.icon-container {
+  display: inline-block;
+  border-radius: 100%;
+  width: 144px;
+  height: 144px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.21) 0px -6px 0px 1px inset;
+  position: absolute;
+  border: none;
+}
+
+.icon-container-inner {
+  background-color: white;
+  width: 108px;
+  height: 108px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: lightgray 0px 4px 2px 1px inset;
+}
+
+#scissors {
+  background-color: #eba722;
+  top: -3rem;
+  left: 6rem;
+}
+
+#paper {
+  background-color: #516ff5;
+  top: 3.5rem;
+  right: -3.5rem;
+}
+
+#rock {
+  background-color: #dc3a55;
+  bottom: -3.5rem;
+  right: 0;
+}
+
+#lizard {
+  background-color: #8c5deb;
+  bottom: -3.5rem;
+  left: 0;
+}
+
+#spock {
+  background-color: #4cbbcf;
+  top: 3.5rem;
+  left: -3.5rem;
+}
+
+.rules-btn {
+  border: solid 3px var(--header-outline);
+  border-radius: 8px;
+  margin-right: 2em;
+  background: none;
+  text-decoration: none;
+  padding: 0.5em 1.5em;
+  font-size: 1.125rem;
+  color: white;
+  font-weight: 600;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  letter-spacing: 4px;
+  float: right; /* TODO: button should be in center for mobile design */
+  background-color: #161a3d;
+}
+.rules-btn:hover {
+  background-color: #2a2f5b;
+}
+
+/**** Stage Two ****/
+
+.stage-two-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  visibility: hidden;
+}
+
+.icon-container-s2 {
+  display: inline-block;
+  border-radius: 100%;
+  width: 290px;
+  height: 290px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.21) 0px -10px 0px 1px inset;
+  border: none;
+}
+
+.icon-container-inner-s2 {
+  background-color: white;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: lightgray 0px 10px 2px 1px inset;
+  width: 224px;
+  height: 224px;
+}
+
+.icon-container-inner-s2 img {
+  width: 102px;
+}
+
+/**** Stage Three ****/
+
+.stage-three-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  visibility: hidden;
+}
+
+/* 
+  TODO: change the name of outcome-label so don't get confused 
+  with other outcomes in outcome/results section below
+*/
+.outcome-label {
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.175rem;
+  margin-bottom: 2.5rem;
+}
+
+.scissors-s2 {
+  background-color: #eba722;
+}
+
+.rock-s2 {
+  background-color: #dc3a55;
+}
+
+.paper-s2 {
+  background-color: #516ff5;
+}
+
+.lizard-s2 {
+  background-color: #8c5deb;
+}
+
+.spock-s2 {
+  background-color: #4cbbcf;
+}
+
+/**** Empty slot ****/
+
+.icon-container-s2-empty {
+  display: inline-block;
+  border-radius: 100%;
+  width: 290px;
+  height: 290px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: inherit;
+}
+
+.icon-container-inner-s2-empty {
+  background-color: #15203f;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 224px;
+  height: 224px;
+}
+
+/**** Stage Four ****/
+
+.outcome-container {
+  width: fit-content;
+  display: none;
+}
+
+.outcome-text {
+  text-align: center;
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25em;
+}
+
+.play-again-btn {
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5em 0;
+  width: 100%;
+  font-size: 1.125rem;
+  letter-spacing: 2px;
+  color: var(--dark-text);
+}
+
+/**** Ripple effect ****/
+
+.circles-container {
+  position: relative;
+  z-index: -1;
+}
+
+.circle {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: #3498db;
+  background-color: hsl(214, 47%, 23%);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.circle:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.circle:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.circle:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+/**** Breakpoints ****/
+
+/*
+1090: move play again section 
+*/
+
+@media (width < 1090px) {
+}
