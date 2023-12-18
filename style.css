@@ -35,8 +35,8 @@ button {
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
-  width: 650px;
-  margin: 0 auto 3rem;
+  max-width: 650px;
+  margin: 0 auto 5rem;
   padding: 1rem 2rem;
 }
 
@@ -94,10 +94,6 @@ button {
 
 .rules-img {
   margin: 1rem 0;
-}
-
-.game-container {
-  position: relative;
 }
 
 /**** Stage one ****/
@@ -166,7 +162,8 @@ button {
 .rules-btn {
   border: solid 3px var(--header-outline);
   border-radius: 8px;
-  margin-right: 2em;
+  margin-top: 3rem;
+  margin-right: 6rem;
   background: none;
   text-decoration: none;
   padding: 0.5em 1.5em;
@@ -185,15 +182,22 @@ button {
 /**** Stage Two ****/
 
 .stage-two-container {
-  position: absolute;
+  /* position: absolute;
   width: 100%;
   height: 100%;
-  top: 0;
-  display: flex;
+  top: 0; */
+  /* display: flex; */
   align-items: center;
   justify-content: center;
   gap: 100px;
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
+}
+
+.player-container,
+.house-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .icon-container-s2 {
@@ -302,6 +306,11 @@ button {
   display: none;
 }
 
+.outcome-container-mobile {
+  width: fit-content;
+  display: none;
+}
+
 .outcome-text {
   text-align: center;
   color: white;
@@ -313,7 +322,7 @@ button {
 .play-again-btn {
   outline: none;
   border: none;
-  border-radius: 4px;
+  border-radius: 7px;
   padding: 0.5em 0;
   width: 100%;
   font-size: 1.125rem;
@@ -367,4 +376,129 @@ button {
 */
 
 @media (width < 1090px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  .top-section {
+    margin: 0;
+    width: 90%;
+    max-width: 390px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1rem;
+  }
+
+  .logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .score-value {
+    font-size: 4rem;
+    font-size: 3rem;
+  }
+  .score-label {
+    font-size: 1.25rem;
+    font-size: 1rem;
+  }
+  .score-container {
+    padding: 0.75rem 3rem;
+    padding: 0.25rem 1.5rem;
+  }
+
+  .stage-one-container {
+    margin: 6rem 0 6rem;
+    /* scale: 0.7;
+    transform: translateY(-200px); */
+  }
+
+  .icon-container {
+    width: 100.8px;
+    height: 100.8px;
+  }
+
+  .icon-container-inner {
+    width: 75.6px;
+    height: 75.6px;
+  }
+
+  .icon-image {
+    max-height: 42px;
+  }
+
+  .bg-pentagon {
+    width: 230.3px;
+    height: 219.1px;
+  }
+
+  #scissors {
+    top: -2rem;
+    left: 4rem;
+  }
+  #spock {
+    top: 2.5rem;
+    left: -2.5rem;
+  }
+  #paper {
+    top: 2.5rem;
+    right: -2.5rem;
+  }
+  #lizard {
+    bottom: -2.5rem;
+  }
+  #rock {
+    bottom: -2.5rem;
+  }
+  .rules-btn {
+    float: none;
+    width: fit-content;
+    margin: 0 0 2rem;
+    margin-top: -66px;
+  }
+  .outcome-label {
+    order: 1;
+  }
+
+  .icon-container-s2 {
+    scale: 0.6;
+  }
+  .circle {
+    scale: 0.6;
+  }
+
+  .stage-two-container {
+    gap: 0px;
+  }
+
+  .stage-two-container {
+    scale: 0.7;
+  }
+
+  .outcome-container {
+    margin-bottom: 4rem;
+  }
+
+  .icon-container-s2-empty {
+    scale: 0.7;
+  }
+
+  .rules-overlay {
+    align-items: normal;
+  }
+
+  .rules-card-header {
+    margin-bottom: 4rem;
+  }
+
+  #outcome-container-mobile {
+    visibility: hidden;
+    display: block;
+    margin-top: -66px;
+  }
 }

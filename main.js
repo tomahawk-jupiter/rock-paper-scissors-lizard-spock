@@ -6,7 +6,6 @@ const houseChoice = () => {
 // Buttons
 const rulesBtn = document.getElementById("rules-btn");
 const closeRulesBtn = document.getElementById("close-rules-btn");
-const playAgainBtn = document.getElementById("play-again-btn");
 
 // Game containers
 const rulesOverlay = document.getElementById("rules-overlay");
@@ -16,24 +15,26 @@ const stageTwoContainer = document.getElementById("stage-two-container");
 const playerPieceContainer = document.getElementById("player-piece-container");
 const housePieceContainer = document.getElementById("house-piece-container");
 const outcomeContainer = document.getElementById("outcome-container");
-const resultDisplay = document.getElementById("result-display");
+const outcomeContainerMobile = document.getElementById(
+  "outcome-container-mobile"
+);
+
 const playerRippleContainer = document.getElementById(
   "player-ripple-container"
 );
 const houseRippleContainer = document.getElementById("house-ripple-container");
 const scoreDisplay = document.getElementById("score");
 
-// Retrieve stored score
+// Retrieve stored score if its in local storage
 window.onload = () => {
   const storedScore = localStorage.getItem("score");
 
   if (storedScore !== null) {
-    // Update the scoreDisplay with the stored score
     scoreDisplay.innerText = storedScore;
   }
 };
 
-// Game pieces
+// Game pieces: add click listeners for each of them
 const choices = ["scissors", "paper", "rock", "lizard", "spock"];
 
 for (const choice of choices) {
@@ -41,14 +42,15 @@ for (const choice of choices) {
   element.addEventListener("click", handlePlayerClickedPiece);
 }
 
-// Game logic mostly in this function
+// Flow of game is controlled in here
 function handlePlayerClickedPiece() {
   const playersChoice = this.id;
   const theHouseChose = houseChoice();
-  stageOneContainer.style.visibility = "hidden";
-  stageTwoContainer.style.visibility = "visible";
+  stageOneContainer.style.display = "none";
+  stageTwoContainer.style.display = "flex";
   const result = gameOutcome(playersChoice, theHouseChose);
-  resultDisplay.textContent = result;
+
+  const usingMobile = addOutcomeToDOM(result);
 
   setTimeout(() => {
     addPlayerPieceToDOM(playersChoice);
@@ -59,7 +61,12 @@ function handlePlayerClickedPiece() {
   }, 1000);
 
   setTimeout(() => {
-    outcomeContainer.style.display = "block";
+    if (usingMobile) {
+      outcomeContainerMobile.style.display = "block";
+      outcomeContainerMobile.style.visibility = "visible";
+    } else {
+      outcomeContainer.style.display = "block";
+    }
   }, 1500);
 
   setTimeout(() => {
@@ -77,35 +84,10 @@ closeRulesBtn.addEventListener("click", () => {
   rulesOverlay.style.visibility = "hidden";
 });
 
-// Close rules when off-clicking
 rulesOverlay.addEventListener("click", (event) => {
   if (!rulesCard.contains(event.target)) {
     rulesOverlay.style.visibility = "hidden";
   }
-});
-
-playAgainBtn.addEventListener("click", () => {
-  stageOneContainer.style.visibility = "visible";
-  stageTwoContainer.style.visibility = "hidden";
-  outcomeContainer.style.display = "none";
-
-  playerRippleContainer.replaceChildren();
-  houseRippleContainer.replaceChildren();
-
-  const createEmptySlotElement = () => {
-    const iconContainer = document.createElement("div");
-    iconContainer.className = "icon-container-s2-empty";
-
-    const innerContainer = document.createElement("div");
-    innerContainer.className = "icon-container-inner-s2-empty";
-
-    iconContainer.appendChild(innerContainer);
-
-    return iconContainer;
-  };
-
-  playerPieceContainer.replaceChildren(createEmptySlotElement());
-  housePieceContainer.replaceChildren(createEmptySlotElement());
 });
 
 const addPlayerPieceToDOM = (playersChoice) => {
@@ -202,4 +184,53 @@ const applyRippleEffect = (result) => {
     result === "YOU WIN" ? playerRippleContainer : houseRippleContainer;
 
   rippleContainer.appendChild(circlesContainer);
+};
+
+const addOutcomeToDOM = (result) => {
+  let usingMobile = false;
+
+  const resultDisplay = document.createElement("div");
+  resultDisplay.id = "result-display";
+  resultDisplay.className = "outcome-text";
+  resultDisplay.textContent = result;
+
+  const playAgainBtn = document.createElement("button");
+  playAgainBtn.id = "play-again-btn";
+  playAgainBtn.className = "play-again-btn";
+  playAgainBtn.textContent = "PLAY AGAIN";
+
+  playAgainBtn.addEventListener("click", () => {
+    stageOneContainer.style.display = "block";
+    stageTwoContainer.style.display = "none";
+    outcomeContainer.style.display = "none";
+    outcomeContainerMobile.style.visibility = "hidden";
+
+    playerRippleContainer.replaceChildren();
+    houseRippleContainer.replaceChildren();
+
+    const createEmptySlotElement = () => {
+      const iconContainer = document.createElement("div");
+      iconContainer.className = "icon-container-s2-empty";
+
+      const innerContainer = document.createElement("div");
+      innerContainer.className = "icon-container-inner-s2-empty";
+
+      iconContainer.appendChild(innerContainer);
+
+      return iconContainer;
+    };
+
+    playerPieceContainer.replaceChildren(createEmptySlotElement());
+    housePieceContainer.replaceChildren(createEmptySlotElement());
+  });
+
+  const screenWidth = window.innerWidth;
+  if (screenWidth < 1090) {
+    outcomeContainerMobile.replaceChildren(resultDisplay, playAgainBtn);
+    usingMobile = true;
+  } else {
+    outcomeContainer.replaceChildren(resultDisplay, playAgainBtn);
+  }
+
+  return usingMobile;
 };

@@ -30,7 +30,7 @@
 
   <body>
     <div class="top-section">
-      <img src="./images/logo-bonus.svg" alt="" />
+      <img class="logo" src="./images/logo-bonus.svg" alt="" />
 
       <div class="score-container">
         <div class="score-label">score</div>
@@ -50,72 +50,93 @@
       </div>
     </div>
 
-    <div class="game-container">
-      <!-- Stage 1 -->
-      <div id="stage-one-container" class="stage-one-container">
-        <img src="./images/bg-pentagon.svg" alt="" />
+    <!-- Stage 1 -->
+    <div id="stage-one-container" class="stage-one-container">
+      <img class="bg-pentagon" src="./images/bg-pentagon.svg" alt="" />
 
-        <button id="scissors" class="icon-container">
-          <div class="icon-container-inner">
-            <img src="./images/icon-scissors.svg" alt="Choose Scissors" />
-          </div>
-        </button>
-
-        <button id="paper" class="icon-container">
-          <div class="icon-container-inner">
-            <img src="./images/icon-paper.svg" alt="Choose Paper" />
-          </div>
-        </button>
-
-        <button id="rock" class="icon-container">
-          <div class="icon-container-inner">
-            <img src="./images/icon-rock.svg" alt="Choose Rock" />
-          </div>
-        </button>
-
-        <button id="lizard" class="icon-container">
-          <div class="icon-container-inner">
-            <img src="./images/icon-lizard.svg" alt="Choose Lizard" />
-          </div>
-        </button>
-
-        <button id="spock" class="icon-container">
-          <div class="icon-container-inner">
-            <img src="./images/icon-spock.svg" alt="Choose Spock" />
-          </div>
-        </button>
-      </div>
-
-      <!-- Stage 2 -->
-      <div id="stage-two-container" class="stage-two-container">
-        <div class="player-container">
-          <div class="outcome-label">YOU PICKED</div>
-          <div id="player-ripple-container"></div>
-          <div id="player-piece-container">
-            <div class="icon-container-s2-empty">
-              <div class="icon-container-inner-s2-empty"></div>
-            </div>
-          </div>
+      <button id="scissors" class="icon-container">
+        <div class="icon-container-inner">
+          <img
+            class="icon-image"
+            src="./images/icon-scissors.svg"
+            alt="Choose Scissors"
+          />
         </div>
+      </button>
 
-        <div id="outcome-container" class="outcome-container">
-          <div id="result-display" class="outcome-text"></div>
-          <button id="play-again-btn" class="play-again-btn">PLAY AGAIN</button>
+      <button id="paper" class="icon-container">
+        <div class="icon-container-inner">
+          <img
+            class="icon-image"
+            src="./images/icon-paper.svg"
+            alt="Choose Paper"
+          />
         </div>
+      </button>
 
-        <div class="house-container">
-          <div class="outcome-label">THE HOUSE PICKED</div>
-          <div id="house-ripple-container"></div>
-          <div id="house-piece-container">
-            <div class="icon-container-s2-empty">
-              <div class="icon-container-inner-s2-empty"></div>
-            </div>
-          </div>
+      <button id="rock" class="icon-container">
+        <div class="icon-container-inner">
+          <img
+            class="icon-image"
+            src="./images/icon-rock.svg"
+            alt="Choose Rock"
+          />
         </div>
-      </div>
+      </button>
 
-      <!-- End of game-container-->
+      <button id="lizard" class="icon-container">
+        <div class="icon-container-inner">
+          <img
+            class="icon-image"
+            src="./images/icon-lizard.svg"
+            alt="Choose Lizard"
+          />
+        </div>
+      </button>
+
+      <button id="spock" class="icon-container">
+        <div class="icon-container-inner">
+          <img
+            class="icon-image"
+            src="./images/icon-spock.svg"
+            alt="Choose Spock"
+          />
+        </div>
+      </button>
     </div>
+
+    <!-- Stage 2 -->
+    <div id="stage-two-container" class="stage-two-container">
+      <div class="player-container">
+        <div class="outcome-label">YOU PICKED</div>
+        <div id="player-ripple-container"></div>
+        <div id="player-piece-container">
+          <div class="icon-container-s2-empty">
+            <div class="icon-container-inner-s2-empty"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="outcome-container" class="outcome-container">
+        <!-- <div id="result-display" class="outcome-text"></div>
+        <button id="play-again-btn" class="play-again-btn">PLAY AGAIN</button> -->
+      </div>
+
+      <div class="house-container">
+        <div class="outcome-label">THE HOUSE PICKED</div>
+        <div id="house-ripple-container"></div>
+        <div id="house-piece-container">
+          <div class="icon-container-s2-empty">
+            <div class="icon-container-inner-s2-empty"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="outcome-container-mobile" class="outcome-container"></div>
+
+    <!-- End of game-container-->
+
     <button id="rules-btn" class="rules-btn">RULES</button>
   </body>
 </html>
