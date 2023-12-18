@@ -101,7 +101,7 @@ button {
 .stage-one-container {
   position: relative;
   width: fit-content;
-  margin: 6rem auto 2rem;
+  margin: 8rem auto 2rem;
 }
 
 .icon-container {
@@ -371,10 +371,6 @@ button {
 
 /**** Breakpoints ****/
 
-/*
-1090: move play again section 
-*/
-
 @media (width < 1090px) {
   body {
     display: flex;
@@ -500,5 +496,12 @@ button {
     visibility: hidden;
     display: block;
     margin-top: -66px;
+  }
+}
+
+@media (min-width: 1400px) {
+  body {
+    padding-right: 200px;
+    padding-left: 200px;
   }
 }
