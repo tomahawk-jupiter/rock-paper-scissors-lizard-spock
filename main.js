@@ -90,38 +90,30 @@ rulesOverlay.addEventListener("click", (event) => {
   }
 });
 
-const addPlayerPieceToDOM = (playersChoice) => {
+// DOM manipulation
+const createIconContainer = (container, choice) => {
   const iconContainer = document.createElement("div");
-  iconContainer.className = `icon-container-s2 ${playersChoice}-s2`;
+  iconContainer.className = `icon-container-s2 ${choice}-s2`;
 
   const innerContainer = document.createElement("div");
   innerContainer.className = "icon-container-inner-s2";
 
   const image = document.createElement("img");
-  image.src = `./images/icon-${playersChoice}.svg`;
-  image.alt = `Choose ${playersChoice}`;
+  image.src = `./images/icon-${choice}.svg`;
+  image.alt = `Choose ${choice}`;
 
   innerContainer.appendChild(image);
   iconContainer.appendChild(innerContainer);
 
-  playerPieceContainer.replaceChildren(iconContainer);
+  container.replaceChildren(iconContainer);
+};
+
+const addPlayerPieceToDOM = (playersChoice) => {
+  createIconContainer(playerPieceContainer, playersChoice, "player");
 };
 
 const addHousePieceToDom = (houseChoice) => {
-  const iconContainer = document.createElement("div");
-  iconContainer.className = `icon-container-s2 ${houseChoice}-s2`;
-
-  const innerContainer = document.createElement("div");
-  innerContainer.className = "icon-container-inner-s2";
-
-  const image = document.createElement("img");
-  image.src = `./images/icon-${houseChoice}.svg`;
-  image.alt = `Choose ${houseChoice}`;
-
-  innerContainer.appendChild(image);
-  iconContainer.appendChild(innerContainer);
-
-  housePieceContainer.replaceChildren(iconContainer);
+  createIconContainer(housePieceContainer, houseChoice, "house");
 };
 
 const gameOutcome = (playerChoice, houseChoice) => {

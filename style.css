@@ -500,8 +500,7 @@ button {
 }
 
 @media (min-width: 1400px) {
-  body {
-    padding-right: 200px;
-    padding-left: 200px;
+  #rules-btn {
+    margin-right: 12rem;
   }
 }
